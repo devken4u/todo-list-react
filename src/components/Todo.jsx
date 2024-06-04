@@ -144,7 +144,7 @@ function Todo() {
   }
 
   function getCookie() {
-    document.cookie = `data="";`;
+    document.cookie = `data="[]";`;
     let cookieData = document.cookie;
     cookieData = cookieData.substring(
       cookieData.indexOf('"'),
