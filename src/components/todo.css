@@ -1,0 +1,211 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+li {
+  list-style-type: none;
+}
+
+body {
+  overflow: hidden;
+  height: 100svh;
+}
+
+.body {
+  overflow-y: scroll;
+  height: 90svh;
+}
+
+.icon-button {
+  cursor: pointer;
+}
+
+.icon-button:active {
+  transform: scale(0.9);
+}
+
+.todo-container {
+  background-color: white;
+  flex-grow: 1;
+  padding: 2em;
+}
+
+.todo-title {
+  font-weight: bold;
+  font-size: 2.5em;
+}
+
+.todo-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.task-done {
+  border-color: #aceaa7 !important;
+  background-color: #eeffec !important;
+}
+
+.task-done .checked-icon {
+  background-color: #7ad772 !important;
+  color: white !important;
+  border-color: #aceaa7 !important;
+}
+
+.todo-item-container {
+  display: flex;
+  border: 2px solid gray;
+  border-radius: 0.5em;
+  padding: 1em;
+  align-items: center;
+  gap: 1em;
+}
+
+.todo-body {
+  flex-grow: 1;
+  outline: none;
+  word-break: break-all;
+}
+
+.checked-icon {
+  color: gray;
+  border: 1px solid gray;
+  border-radius: 1.5em;
+  padding: 0.5em;
+  flex-shrink: 0;
+}
+
+.todo-settings {
+  display: flex;
+  gap: 0.5em;
+  flex-shrink: 0;
+}
+
+.todo-settings * {
+  padding: 0.8em;
+  border-radius: 1.5em;
+}
+
+.edit-icon {
+  background-color: #ffe4c3;
+}
+
+.delete-icon {
+  background-color: #ffbaba;
+  color: #ff4e4e;
+}
+
+.new-task {
+  width: 100%;
+  padding: 1em;
+  margin: 0.5em 0;
+  font-weight: bold;
+  background-color: #ffba5f;
+  border: 1px solid #ef9b2c;
+  color: #662b00;
+  border-radius: 1.5em;
+  cursor: pointer;
+}
+
+.new-task:active {
+  transform: scale(0.99);
+}
+
+/* new task panel */
+.new-task-panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.new-task-container {
+  background-color: white;
+  padding: 1.5em;
+  border-radius: 1.5em;
+  display: flex;
+  flex-direction: column;
+}
+
+.close-new-panel-icon {
+  align-self: flex-end;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+.close-new-panel-icon:active {
+  transform: scale(0.9);
+}
+
+.new-task-title {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 0.5em 0;
+  text-align: center;
+}
+
+.new-task-input {
+  border: none;
+  border-bottom: 1px solid gray;
+  outline: none;
+  margin: 1em 0;
+  font-size: 1.2em;
+  text-align: center;
+  padding-bottom: 0.5em;
+}
+
+.add-task {
+  border: 1px solid #ea8e13;
+  background-color: #ffba5f;
+  color: #7a3d00;
+  border-radius: 1.5em;
+  padding: 0.5em;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1em;
+}
+
+.add-task:active {
+  transform: scale(0.9);
+}
+
+/* new task panel */
+
+.no-task {
+  text-align: center;
+  font-weight: bold;
+  padding: 1em;
+  font-size: 1.5em;
+}
+
+@media all and (min-width: 800px) {
+  .body {
+    padding: 1em;
+    background-color: #edebeb;
+  }
+
+  .todo-container {
+    border-radius: 1em;
+    box-shadow: 0px 0px 5px black;
+  }
+}
+
+@media all and (min-width: 1200px) {
+  .body {
+    padding: 3em;
+    font-size: 20px;
+  }
+
+  .todo-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
