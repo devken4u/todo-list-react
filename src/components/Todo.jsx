@@ -61,13 +61,15 @@ function AddNewTask({ hidden, closePanel, addNewTask }) {
   }
 
   function createNewTask() {
-    const task = {
-      body: value,
-      done: false,
-    };
-    addNewTask(task);
-    setValue("");
-    closePanel();
+    if (value) {
+      const task = {
+        body: value,
+        done: false,
+      };
+      addNewTask(task);
+      setValue("");
+      closePanel();
+    }
   }
 
   useEffect(() => {
@@ -99,8 +101,14 @@ function AddNewTask({ hidden, closePanel, addNewTask }) {
 }
 
 function Todo() {
-  const [taskList, setTaskList] = useState([]);
+  let savedCookie = getCookie();
+
+  const [taskList, setTaskList] = useState(savedCookie);
   const [hidden, setHidden] = useState(true);
+
+  useEffect(() => {
+    updateCookie();
+  });
 
   function onTaskDone(index) {
     taskList[index].done = !taskList[index].done;
@@ -124,6 +132,25 @@ function Todo() {
 
   function addNewTask(task) {
     setTaskList([...taskList, task]);
+  }
+
+  function updateCookie() {
+    let cookieData = taskList;
+    const expireDate = new Date();
+    expireDate.setFullYear(expireDate.getFullYear() + 100);
+    document.cookie = `data="${JSON.stringify(
+      cookieData
+    )}"; expires=${expireDate.toUTCString()}`;
+  }
+
+  function getCookie() {
+    let cookieData = document.cookie;
+    cookieData = cookieData.substring(
+      cookieData.indexOf('"'),
+      cookieData.length
+    );
+    cookieData = cookieData.replace(/^["]+|["]+$/g, "");
+    return JSON.parse(cookieData);
   }
 
   return (
