@@ -5,7 +5,7 @@ import { BiEditAlt } from "react-icons/bi";
 import { IoTrash } from "react-icons/io5";
 import { useState, useRef, useEffect } from "react";
 
-function TaskItem({ data, index, onTaskDone, onDeleteTask }) {
+function TaskItem({ data, index, onTaskDone, onDeleteTask, saveEditedTask }) {
   const todoItemContainer = useRef(null);
   const body = useRef(null);
 
@@ -25,6 +25,7 @@ function TaskItem({ data, index, onTaskDone, onDeleteTask }) {
 
   function bodyBlur() {
     body.current.contentEditable = false;
+    saveEditedTask(body.current.textContent, index);
   }
 
   useEffect(() => {
@@ -134,6 +135,11 @@ function Todo() {
     setTaskList([...taskList, task]);
   }
 
+  function saveEditedTask(body, index) {
+    taskList[index].body = body;
+    setTaskList([...taskList]);
+  }
+
   function updateCookie() {
     let cookieData = taskList;
     const expireDate = new Date();
@@ -173,6 +179,7 @@ function Todo() {
                 index={index}
                 onTaskDone={onTaskDone}
                 onDeleteTask={onDeleteTask}
+                saveEditedTask={saveEditedTask}
               />
             );
           })}
